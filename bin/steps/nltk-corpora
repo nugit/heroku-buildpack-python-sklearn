@@ -20,12 +20,11 @@ source $BIN_DIR/utils
 cd .heroku
 
 if [ -d ${VENDORED_GIT_NAME} ]; then
-  rm -rf ${VENDORED_GIT_NAME}
+  puts-step "Using cached nltk_data corpora"
+else
+  puts-step "Downloading nltk_data corpora: brown, punkt, wordnet"
+  git clone ${VENDORED_GIT_REPO}
 fi
-
-puts-step "Downloading nltk_data corpora"
-# Download and extract everything into target vendor directory.
-git clone ${VENDORED_GIT_REPO}
 
 cd ..
 
