@@ -8,6 +8,9 @@ Additionally, it adds support for Numpy, Scipy and Scikit-learn.
 
 [![Build Status](https://secure.travis-ci.org/dbrgn/heroku-buildpack-python-sklearn.png?branch=master)](http://travis-ci.org/dbrgn/heroku-buildpack-python-sklearn)
 
+This fork adds an additional build step to download the NLTK corpora 
+`brown`, `punkt`, `wordnet` for [TextBlob](http://textblob.readthedocs.org/en/latest/)
+
 Differences to other forks
 --------------------------
 
