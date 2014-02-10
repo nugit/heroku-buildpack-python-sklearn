@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script serves as the Scipy/Numpy build step of the
+# This script serves as the NLTK corpora download build step of the
 # [**Python Buildpack**](https://github.com/heroku/heroku-buildpack-python) 
 # compiler. 
 # 
@@ -12,19 +12,19 @@
 VENDORED_GIT_NAME="nltk_data"
 VENDORED_GIT_REPO="git://github.com/alyssaq/${VENDORED_GIT_NAME}.git"
 
-declare -a CORPORA=('brown' 'punkt' 'wordnet')
+#Downloads corpora: 'brown' 'punkt' 'wordnet'
 
 # Syntax sugar.
 source $BIN_DIR/utils
 
-cd .heroku
+cd /usr/local
 if [ -d ${VENDORED_GIT_NAME} ]; then
   rm -rf ${VENDORED_GIT_NAME}
 fi
-# If numpy or scipy exists within requirements.txt then use binaries.
-puts-step "Creating/downloading nltk_data corporas."
+
+puts-step "Downloading nltk_data corpora"
 # Download and extract everything into target vendor directory.
 git clone ${VENDORED_GIT_REPO}
 
-cd ..
+cd /app
 
