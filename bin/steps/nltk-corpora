@@ -18,7 +18,9 @@ declare -a CORPORA=('brown' 'punkt' 'wordnet')
 source $BIN_DIR/utils
 
 cd .heroku
-
+if [ -d ${VENDORED_GIT_NAME} ]; then
+  rm -rf ${VENDORED_GIT_NAME}
+fi
 # If numpy or scipy exists within requirements.txt then use binaries.
 puts-step "Creating/downloading nltk_data corporas."
 # Download and extract everything into target vendor directory.
