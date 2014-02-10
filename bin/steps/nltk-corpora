@@ -11,8 +11,6 @@
 
 VENDORED_GIT_NAME="nltk_data"
 VENDORED_GIT_REPO="git://github.com/alyssaq/${VENDORED_GIT_NAME}.git"
-# The location of the pre-compiled atlas/lapack/blas/gfortran binaries.
-VENDORED_BINARIES="npscipy"
 
 declare -a CORPORA=('brown' 'punkt' 'wordnet')
 
@@ -29,7 +27,7 @@ git clone ${VENDORED_GIT_REPO} > /dev/null
 for name in ${CORPORA[@]} 
 do
   puts-step "Downloading $name"
-  tar -xvf $name.zip > /dev/null
+  tar -xvf ${VENDORED_GIT_NAME}/$name.zip > /dev/null
 done
 
 if [ -d ${VENDORED_GIT_NAME} ]; then
