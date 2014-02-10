@@ -27,7 +27,7 @@ git clone ${VENDORED_GIT_REPO} > /dev/null
 for name in ${CORPORA[@]} 
 do
   puts-step "Downloading $name"
-  tar -xvf ${VENDORED_GIT_NAME}/$name.zip > /dev/null
+  tar -xvf ${VENDORED_GIT_NAME}/$name > /dev/null
 done
 
 if [ -d ${VENDORED_GIT_NAME} ]; then
