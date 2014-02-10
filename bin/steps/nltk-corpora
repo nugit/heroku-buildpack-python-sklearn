@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# This script serves as the Scipy/Numpy build step of the
+# [**Python Buildpack**](https://github.com/heroku/heroku-buildpack-python) 
+# compiler. 
+# 
+# A [buildpack](http://devcenter.heroku.com/articles/buildpacks) is an 
+# adapter between a Python application and Heroku's runtime.
+#
+# This script is invoked by [`bin/compile`](/).
+
+VENDORED_GIT_NAME="nltk_data"
+VENDORED_GIT_REPO="git://github.com/alyssaq/${VENDORED_GIT_NAME}.git"
+# The location of the pre-compiled atlas/lapack/blas/gfortran binaries.
+VENDORED_BINARIES="npscipy"
+
+CORPORA = (
+  'brown'   # Required for FastNPExtractor
+  'punkt'   # Required for WordTokenizer
+  'wordnet' # Required for lemmatization
+)
+
+# Syntax sugar.
+source $BIN_DIR/utils
+
+cd .heroku
+
+# If numpy or scipy exists within requirements.txt then use binaries.
+puts-step "Creating/downloading nltk_data corporas."
+# Download and extract everything into target vendor directory.
+git clone ${VENDORED_GIT_REPO} > /dev/null
+
+for name in ${CORPORA[@]} 
+do
+  puts-step "Downloading $name"
+  tar -xvf $name.zip > /dev/null
+done
+
+if [ -d ${VENDORED_GIT_NAME} ]; then
+  rm -rf ${VENDORED_GIT_NAME}
+fi
+cd ..
+
