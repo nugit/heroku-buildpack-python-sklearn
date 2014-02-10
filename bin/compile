@@ -182,7 +182,7 @@ source $BIN_DIR/steps/collectstatic
 
 # Set context environment variables.
 set-env NLTK_DATA /app/.heroku/nltk_data
-set-env PATH '$HOME/.heroku/python/bin:$NLTK_DATA:$PATH'
+set-env PATH '$HOME/.heroku/python/bin:$PATH'
 set-env PYTHONUNBUFFERED true
 set-env PYTHONHOME /app/.heroku/python
 set-default-env LIBRARY_PATH $LIBRARY_PATH

@@ -18,6 +18,7 @@ VENDORED_GIT_REPO="git://github.com/alyssaq/${VENDORED_GIT_NAME}.git"
 source $BIN_DIR/utils
 
 cd .heroku
+
 if [ -d ${VENDORED_GIT_NAME} ]; then
   rm -rf ${VENDORED_GIT_NAME}
 fi
