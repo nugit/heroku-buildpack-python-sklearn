@@ -17,7 +17,7 @@ VENDORED_GIT_REPO="git://github.com/alyssaq/${VENDORED_GIT_NAME}.git"
 # Syntax sugar.
 source $BIN_DIR/utils
 
-cd /usr/local
+cd .heroku
 if [ -d ${VENDORED_GIT_NAME} ]; then
   rm -rf ${VENDORED_GIT_NAME}
 fi
@@ -26,5 +26,5 @@ puts-step "Downloading nltk_data corpora"
 # Download and extract everything into target vendor directory.
 git clone ${VENDORED_GIT_REPO}
 
-cd /app
+cd ..
 
