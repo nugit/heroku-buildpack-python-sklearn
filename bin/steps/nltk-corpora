@@ -14,11 +14,7 @@ VENDORED_GIT_REPO="git://github.com/alyssaq/${VENDORED_GIT_NAME}.git"
 # The location of the pre-compiled atlas/lapack/blas/gfortran binaries.
 VENDORED_BINARIES="npscipy"
 
-CORPORA = (
-  'brown'   # Required for FastNPExtractor
-  'punkt'   # Required for WordTokenizer
-  'wordnet' # Required for lemmatization
-)
+declare -a CORPORA=('brown','punkt','wordnet')
 
 # Syntax sugar.
 source $BIN_DIR/utils
